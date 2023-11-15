@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "Example\Example.csproj", "{545BFE08-7CFC-4CB7-9C95-CF9E0413600D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example", "Example\Example.csproj", "{545BFE08-7CFC-4CB7-9C95-CF9E0413600D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassTest", "ClassTest\ClassTest.csproj", "{2720A78B-1207-487D-8D15-BD00DB88ADB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassTest", "ClassTest\ClassTest.csproj", "{2720A78B-1207-487D-8D15-BD00DB88ADB3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpencesClient", "ExpencesClient\ExpencesClient.csproj", "{30B0C696-1B07-46DD-94DD-40DBAE8650A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{2720A78B-1207-487D-8D15-BD00DB88ADB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2720A78B-1207-487D-8D15-BD00DB88ADB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2720A78B-1207-487D-8D15-BD00DB88ADB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30B0C696-1B07-46DD-94DD-40DBAE8650A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30B0C696-1B07-46DD-94DD-40DBAE8650A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30B0C696-1B07-46DD-94DD-40DBAE8650A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30B0C696-1B07-46DD-94DD-40DBAE8650A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

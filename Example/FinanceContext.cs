@@ -18,6 +18,7 @@ namespace Example
         public DbSet<Income> Incomes { get; set; }
         public DbSet<Transfer> Transfers { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Source> Source { get; set; }  
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
