@@ -55,6 +55,8 @@
             viewMenu = new ToolStripMenuItem();
             toolBarToolStripMenuItem = new ToolStripMenuItem();
             statusBarToolStripMenuItem = new ToolStripMenuItem();
+            referencesMenu = new ToolStripMenuItem();
+            mnuItemSource = new ToolStripMenuItem();
             toolsMenu = new ToolStripMenuItem();
             optionsToolStripMenuItem = new ToolStripMenuItem();
             windowsMenu = new ToolStripMenuItem();
@@ -82,8 +84,8 @@
             statusStrip = new StatusStrip();
             toolStripStatusLabel = new ToolStripStatusLabel();
             toolTip = new ToolTip(components);
-            referencesMenu = new ToolStripMenuItem();
-            mnuItemSource = new ToolStripMenuItem();
+            operationsMenu = new ToolStripMenuItem();
+            menuItemIncomes = new ToolStripMenuItem();
             menuStrip.SuspendLayout();
             toolStrip.SuspendLayout();
             statusStrip.SuspendLayout();
@@ -92,7 +94,7 @@
             // menuStrip
             // 
             menuStrip.ImageScalingSize = new Size(32, 32);
-            menuStrip.Items.AddRange(new ToolStripItem[] { fileMenu, editMenu, viewMenu, referencesMenu, toolsMenu, windowsMenu, helpMenu });
+            menuStrip.Items.AddRange(new ToolStripItem[] { fileMenu, editMenu, viewMenu, referencesMenu, operationsMenu, toolsMenu, windowsMenu, helpMenu });
             menuStrip.Location = new Point(0, 0);
             menuStrip.MdiWindowListItem = windowsMenu;
             menuStrip.Name = "menuStrip";
@@ -288,6 +290,20 @@
             statusBarToolStripMenuItem.Size = new Size(391, 44);
             statusBarToolStripMenuItem.Text = "&Строка состояния";
             statusBarToolStripMenuItem.Click += StatusBarToolStripMenuItem_Click;
+            // 
+            // referencesMenu
+            // 
+            referencesMenu.DropDownItems.AddRange(new ToolStripItem[] { mnuItemSource });
+            referencesMenu.Name = "referencesMenu";
+            referencesMenu.Size = new Size(184, 38);
+            referencesMenu.Text = "Справочники";
+            // 
+            // mnuItemSource
+            // 
+            mnuItemSource.Name = "mnuItemSource";
+            mnuItemSource.Size = new Size(360, 44);
+            mnuItemSource.Text = "Источники средств";
+            mnuItemSource.Click += mnuItemSource_Click;
             // 
             // toolsMenu
             // 
@@ -486,19 +502,19 @@
             toolStripStatusLabel.Size = new Size(131, 32);
             toolStripStatusLabel.Text = "Состояние";
             // 
-            // referencesMenu
+            // operationsMenu
             // 
-            referencesMenu.DropDownItems.AddRange(new ToolStripItem[] { mnuItemSource });
-            referencesMenu.Name = "referencesMenu";
-            referencesMenu.Size = new Size(184, 38);
-            referencesMenu.Text = "Справочники";
+            operationsMenu.DropDownItems.AddRange(new ToolStripItem[] { menuItemIncomes });
+            operationsMenu.Name = "operationsMenu";
+            operationsMenu.Size = new Size(147, 38);
+            operationsMenu.Text = "Операции";
             // 
-            // mnuItemSource
+            // menuItemIncomes
             // 
-            mnuItemSource.Name = "mnuItemSource";
-            mnuItemSource.Size = new Size(360, 44);
-            mnuItemSource.Text = "Источники средств";
-            mnuItemSource.Click += mnuItemSource_Click;
+            menuItemIncomes.Name = "menuItemIncomes";
+            menuItemIncomes.Size = new Size(359, 44);
+            menuItemIncomes.Text = "Поступление";
+            menuItemIncomes.Click += menuItemIncomes_Click;
             // 
             // frmMain
             // 
@@ -579,6 +595,8 @@
         private ToolTip toolTip;
         private ToolStripMenuItem referencesMenu;
         private ToolStripMenuItem mnuItemSource;
+        private ToolStripMenuItem operationsMenu;
+        private ToolStripMenuItem menuItemIncomes;
     }
 }
 

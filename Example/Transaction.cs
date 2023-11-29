@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Example
 {
     
-    public abstract class Transaction: IFullTransactionInfo, IEnumerable, IEnumerable<TransactionElement>
+    public abstract class Transaction: IEntity, IFullTransactionInfo, IEnumerable, IEnumerable<TransactionElement>
     {
         protected List<TransactionElement> _elements = new List<TransactionElement>();
         

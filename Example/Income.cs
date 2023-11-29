@@ -21,7 +21,8 @@ namespace Example
 
         public override string TransactionInfo()
         {
-            return $"Поступление на {DestinationAccount?.Name} на сумму {this.Sum}";
+            return this.FullInfo(); 
+                //$"Поступление на {DestinationAccount?.Name} на сумму {this.Sum}";
         }
 
         public override bool Equals(object? obj)

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Example;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +15,7 @@ namespace ExpencesClient
     public partial class frmMain : Form
     {
         private int childFormNumber = 0;
+        private FinanceContext context = new FinanceContext();
 
         public frmMain()
         {
@@ -118,7 +121,56 @@ namespace ExpencesClient
             {
                 frm.BringToFront();
             }
-            
+
+        }
+
+        private void menuItemIncomes_Click(object sender, EventArgs e)
+        {
+/*
+            var incomeInfo = (from income in context.Incomes
+                             join account in context.Accounts on income.DestinationAccount.Id equals account.Id
+                             select new { Name = income.Name, Account = account.Name, Date = income.Date }).ToList();
+            foreach(var income in incomeInfo)
+            {
+                MessageBox.Show($"Поступление {income.Name} на счет {income.Account} от {income.Date.ToShortDateString()}");
+            }
+            return;
+*/
+            frmEntityList ? frm = this.MdiChildren.FirstOrDefault(f => f.GetType() == typeof(frmEntityList)) as frmEntityList;
+            if (frm == null)
+            {                
+                var incomes = context.Incomes
+                    .Include("DestinationAccount")
+                    .OrderByDescending(i => i.Date);
+
+                //SaveEntityDelegate saveFunc = new SaveEntityDelegate(SaveEntity);                
+                var action = new Action<IEntity>(SaveEntity);
+                    
+                var anotherAction = delegate (IEntity entity)
+                {                    
+                    this.SaveEntity(entity);
+                };
+
+                Action<IEntity> yetAnotherAction = e => this.SaveEntity(e); 
+
+                frmIncome frmIncome = new frmIncome();
+                frm = new frmEntityList(incomes, frmIncome, action);
+                //frm = new frmEntityList(incomes, frmIncome, e => this.SaveEntity(e));
+                frm.MdiParent = this;
+                frm.Show();                
+            }
+            else
+            {
+                frm.BringToFront();
+            }
+        }
+
+        private void SaveEntity(IEntity entity)
+        {
+            var contextElement = context.Entry(entity);
+            if (contextElement.State == EntityState.Detached)
+                context.Add(entity);
+            context.SaveChanges();
         }
     }
 }

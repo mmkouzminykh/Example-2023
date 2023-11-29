@@ -8,25 +8,38 @@ namespace ClassTest
         {
             
                        
-            Account account = new Account();            
+            Account account = new Account();
+            account.Name = "Новый счет";
             account.IncreaseBalance(10);
             account.BalanceInfo();
             
             Console.WriteLine($"Created account with id {account.Id}, name {account.Name} and balance {account.Balance}");
 
-            var income = new Income()
+            FinanceContext context = new FinanceContext();
+
+            var source = context.Source.Find(new object[1]);
+            DateTime incomeDate = new DateTime(2023, 1, 10);
+            
+            for (int i = 0; i < 10; i++)
             {
-                Id = Guid.NewGuid(),
-                Name = "Тестовое поступление",
-                Description = "нет",
-                Date = DateTime.Now,
-                Sum = 1000,
-                DestinationAccount = account,
-                Source = new Source() { Id = 1, Name = "Источник"}
-            };
 
-            income = (Income)(income + new TransactionElement { Id = 1, Content = "Test", Sum = 1000 });
 
+                var income = new Income()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = $"Тестовое поступление {i}",
+                    Description = "нет",
+                    Date = incomeDate,
+                    Sum = 1000,
+                    DestinationAccount = account,
+                    Source = source
+                };
+
+                income = (Income)(income + new TransactionElement { Id = 1, Content = "Test", Sum = 1000 });
+                context.Incomes.Add(income);
+                incomeDate = incomeDate.AddMonths(1);
+            }
+            /*
             var expense = new Expense()
             {
                 Id = Guid.NewGuid(),
@@ -35,9 +48,16 @@ namespace ClassTest
                 Date = DateTime.Now,
                 Sum = 1000,
                 SourceAccount = account,
-                Destination = new Destination() { Id = 1, Name = "Бытовые нужды" }
+                Destination = new Destination() { Name = "Бытовые нужды" }
             };
+            */
+            
+             
+            //context.Expenses.Add( expense );
+            context.SaveChanges();
 
+            return;
+            /*
             List<Transaction> transactions = new List<Transaction>() { income, expense };
 
             foreach (Transaction transaction in transactions)
@@ -51,7 +71,7 @@ namespace ClassTest
 
             PrintInfo(expense);
             PrintInfo(income);
-
+            */
             IEnumerable<Transaction> obj;
             List<Expense> list = new List<Expense>();
             obj = list;
